@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+.body_justify{
+    margin-left: 25pc;
+    background-color: rgb(240, 248, 250);
+    margin-right: 25pc;
+    padding-left: 10pc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    
+}
+.titulo_P{
+    text-align: center;
+    background-color: rgb(133, 207, 241);
+    margin-bottom: 50px;
+}
+.prioridade{
+    width: 140px;
+    display: flex;
+    background-color: rgb(245, 206, 206);
+   /* margin: 0 auto;/*para o centro*/
+    height: 30px;/*para centralizar a div*/
+    align-items: center;/*para centralizar a frase dentro*/
+    justify-content: center;/*centralizar na horizontal*/
+    color: red;
+    margin-left: 3pc;
+}
+.flex{
+    display: flex;
+    
+}
+.titulo{
+    margin-right: 1pc;
+
+}
+.aberto{
+    background-color: rgb(172, 211, 248);
+    color: rgb(5, 113, 238);
+}
+.space_betwen{
+    /*display: flex;
+    align-items: center;*/
+    gap: 8pc;
+    
+}
+.btn_back {
+            background-color: #777;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 5px;
+            margin-right: 10px;
+        }
+ /*.btn_back:hover {
+            background-color: #555;
+        }*/
+  .btn_save {
+            background-color: rgb(9, 137, 211);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 5px;
+            text-decoration: none;
+        }
+
+</style>
+</head>
+<body>
+    <h1 class="titulo_P">Detalhe do Chamado</h1>
+    <div class="body_justify" >
+        <div class="flex">
+            <h3 class="titulo">Titulo:</h3>
+            <h3>{{chamado_detal}}</h3>
+        </div>
+        <div class="prioridade">
+            <h4>Prioridade :</h4>
+            <h4>{{chamado_detal.prioridade}}</h4>
+        </div>
+        <div class="flex">
+            <h3 class="titulo">Status :</h3>
+            <h3 class="aberto">{{chamado_detal.status}}</h3>
+        </div>
+        <div class="infogT">
+            <h2>Informacoes gerais</h2></div>
+            <div class="infgcontent">
+                <div class="flex">
+                    <p class="titulo">Usuario:</p>
+                    <p>{{chamado_detal.usuario}}</p>
+                </div>
+                <div class="flex">
+                    <p class="titulo">Técncio :</p>
+                    <p>{{chamado_detal.tecnico}}</p>
+                </div>
+                <div class="flex">
+                    <p class="titulo">Tempo de Solução :</p>
+                    <p>{{chamado_detal.tempo_solucao}} h</p>  
+                </div>
+                    
+        <div class="desc">
+            <h2 class="descri_caixa" >Descriacao</h2>
+            <p>{{chamado_detal.descricao}}</p>
+        </div>
+        <h2 class="">Datas</h2>
+        <div class="datas">
+            <p>Criado em : {{chamado_detal.data_criacao}}</p>
+            <p>Actualidado em : {{chamado_detal.atualizado_em}}</p>
+
+        </div>
+        <div class="flex space_betwen">
+            <a href="{% url 'chamado_listar'%}" class="btn_back">Voltar a Lista</a>
+            <a href="{% url 'chamado_editar' chamado_detal.id %}" class="btn_save">Editar chamado</a>
+        </div>
+    </div>
+    
+</body>
+</html>

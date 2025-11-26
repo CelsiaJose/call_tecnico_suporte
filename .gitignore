@@ -1,0 +1,22 @@
+.env
+# Bytecode do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configurações locais
+
+
+# Pastas do Django
+db.sqlite3      # banco local (não precisa versionar)
+media/          # arquivos de upload
+
+# Containers e volumes
+*.pid
+*.sock
+docker-compose.override.yml
+
+settings_local.py
+
+# VSCode
+.vscode/

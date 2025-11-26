@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+       .container {
+        max-width: 100%;
+        background:rgb(9, 137, 211);
+        height: 50px;
+       
+        }
+        header{
+            
+                   /* ocupa toda altura da barra */
+        display: flex;  
+              /* header também vira flex */
+        align-items: center;
+         height: 100%;    
+        }
+        
+       
+        .nav_flex {
+            display: flex!important;
+            justify-content: space-between;/* um à esquerda, outro à direita */
+            /*justify-items: ;usado so em display grid*/
+            align-items:  center;
+            list-style: none;   /* tira as bolinhas */
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            
+       }
+        .nav_flex a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem; /* opcional: melhora o clique */
+  }
+       
+       
+        body{
+
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+        .btn-1-s
+        {
+            background-color:rgb(9, 137, 211);
+            border:0;
+            color: rgb(255, 255, 255);
+           
+        }
+        .btn2_nc_div{
+                /*background-color: blueviolet;*/
+                width: 100%;
+                height: 40px;
+                margin-bottom: 30px;
+        }
+        .btn2_nc{
+                background-color: rgb(23, 143, 223);
+                width: 150px;
+                text-align: left;
+                height: 40px;
+                border-radius: 5px;
+                margin-bottom: 50px;
+                
+        }
+        
+        .body{
+            /*background-color: rgb(154, 154, 235);*/
+            max-width: 900px;   /* largura máxima da sua “tabela” */
+            margin: 0 auto;  
+        }
+        .body_list_t{
+            /*background-color: rgb(143, 172, 141);*/
+            height: 100%;
+            display: flex;
+            padding-left: 10px;
+            margin: 0 ;  
+            align-items: center;
+
+        }
+        .list_itens{
+            display: flex;
+            /*background-color: rgb(207, 124, 23);*/
+            padding-left: 10px;
+            
+
+        }
+        .col_1{
+           /* background-color: aquamarine;*/
+          
+            width: 150px;
+            height: 20px;
+        }
+        .col_2{
+           /* background-color: rgb(13, 119, 84);*/
+            width: 200px;
+            height: 20px;
+            
+        }
+        .col_3{
+            /*background-color: rgb(11, 236, 48);*/
+            width: 100px;
+            height: 20px;
+        }
+        .corAberto{
+            background-color: rgb(149, 247, 149);
+           /* border: 1px solid black;*/
+            margin-bottom: 3px;
+            border-radius: 5px;
+            margin-right: 10px;
+            height: 25px;
+        }
+        .col_4{
+           /* background-color: rgb(29, 46, 40);*/
+            width: 150px;
+            height: 20px;
+        }
+        
+        
+        
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header> 
+            <ul class="nav_flex">
+                 <li><a href="#" aria-current="page">Chamados</a></li>
+                 <li><button type="submit"  class="btn-1-s">Sair</button></li>
+                 
+            </ul> 
+        </header>
+    </div>
+    <div class="body">
+          <h1>Lista de Chamados a téncios </h1>
+        <div class="btn2_nc_div">
+            <a href="{% url "chamado_criar" %}"><button type="submit" class="btn2_nc">Novo Chamado</button></a>
+        </div>
+          <!-- Cabeçalho da tabela -->
+        <div class="body_list_t">
+            <div class="col_1"><b>Titulo</b></div>
+            <div class="col_2"><b>Usuario</b></div>
+            <div class="col_3"><b>Status</b></div>
+            <div class="col_4"><b>Prioridade</b></div>
+            
+        </div>
+         
+        <!-- Linhas da lista -->
+        {% if chamados%}
+            {% for x in chamados%}
+           
+            <form method="POST" action="{% url 'chamado_deletar' x.id%}">
+                {% csrf_token %}
+                <div class="body_list_t list_itens">
+            
+                    <div class="col_1"><a href="{%url 'chamado_lista_detal' x.id%}">{{x.titulo}}</a></div>
+                    <div class="col_2">{{x.usuario}}</div>
+                    <div class="col_3 corAberto" >{{x.status}}</div>
+                    <div class="col_4">{{x.prioridade}}</div>
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este chamado?');">Apagar</button>
+                    
+                </div>
+            </form>
+           {% endfor%}
+         {% else %}
+            <p>Lista vazia</p>
+        {% endif %}
+            
+    </div> 
+</body>
+</html>

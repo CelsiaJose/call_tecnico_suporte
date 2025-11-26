@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: celsia
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: sgcp
+      
+      
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      POSTGRES_USER: celsia
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: sgcp
+      POSTGRES_HOST: db #porque está rodando dentro do docker e acessando pelo get no setting
+
+volumes:
+  postgres_data:

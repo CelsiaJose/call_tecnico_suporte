@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Chamado</title>
+    <style>
+        .container {
+            max-width: 100%;
+            background: rgb(9, 137, 211);
+            height: 50px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav_flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav_flex a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-1-s {
+            background-color: rgb(9, 137, 211);
+            border: 1px solid white;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f8;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* CARD DO FORMULÁRIO */
+        .form_container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form_group {
+            margin-bottom: 15px;
+        }
+
+        .form_group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form_group input,
+        .form_group select,
+        .form_group textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form_group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btns_row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn_back {
+            background-color: #777;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn_save {
+            background-color: rgb(9, 137, 211);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn_back:hover {
+            background-color: #555;
+        }
+
+        .btn_save:hover {
+            background-color: rgb(5, 110, 171);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <ul class="nav_flex">
+            <li><a href="#">Chamados</a></li>
+            <li><button type="button" class="btn-1-s">Sair</button></li>
+        </ul>
+    </header>
+</div>
+
+<h1>Editar Chamado</h1>
+
+<div class="form_container">
+
+    <form method="post">
+        {% csrf_token %}
+        <!-- Se você usa form automático -->
+        {# {{ form.as_p }} #}<!-- A diferenca é que o prendido renderiza todos os capos este so os espcificados abaixo -->
+
+        <!-- Ou campos individuais, se quiser controlar layout: -->
+        <div class="form_group">
+            <label for="id_titulo">Título</label>
+            {{ form.titulo }}
+        </div>
+
+        <div class="form_group">
+            <label for="id_descricao">Descrição</label>
+            {{ form.descricao }}
+        </div>
+
+        <div class="form_group">
+            <label for="id_status">Status</label>
+            {{ form.status }}
+        </div>
+
+        <div class="form_group">
+            <label for="id_prioridade">Prioridade</label>
+            {{ form.prioridade }}
+        </div>
+
+        <div class="form_group">
+            <label for="id_usuario">Usuário</label>
+            {{ form.usuario }}
+        </div>
+
+        <div class="btns_row">
+            <a href="{% url 'chamado_listar' %}" class="btn_back">Voltar à Lista</a>
+            <button class="btn_save" type="submit">Salvar Alterações</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

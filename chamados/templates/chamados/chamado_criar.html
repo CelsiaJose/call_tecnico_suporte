@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><a>Criar usuarios</a></h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {{form.as_p}}
+        <button type="submit">Enviar</button>
+    </form>
+    <h1> Lista de usuarios</h1>
+
+    <a href="{% url "chamado_listar" %}">voltar a lista de chamados</a>
+
+
+
+
+
+</body>
+</html>
