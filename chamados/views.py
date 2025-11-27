@@ -4,7 +4,10 @@ from .forms import formChamados
 from .formseditar import formChamadoseditar
 from django.contrib import messages
 from .models import Chamados
-
+#Imports para o viewSet
+from .serializers import UserSerializer,ChamadoSerializer
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 def chamado_listar(request):
 
     chamados = Chamados.objects.all()
@@ -62,5 +65,15 @@ def chamado_deletar(request,id):
     #return render(request, 'chamados/chamado_confirm_delete.html', {'chamado': chamado})
 
 
+# Views do ViewSet
+
+class chamadoViewset(viewsets.ModelViewSet):
+    queryset=Chamados.objects.all() # chama tudo do model chamado
+    serializer_class=ChamadoSerializer #chama tudo do serializer transforma os dados do chamado em json
+    permission_classes = [IsAuthenticated] # Para permitir so usuario autenticado digual @decorate?log
+
+    def perform_create(self, serializer):
+        # Quando criar um chamado pela API, usa o usuário logado como "usuario"
+        serializer.save(usuario=self.request.user) #Ou seja: não precisa o cliente enviar o usuário no JSON — o backend define sozinho.O usuario logado,ou seja salva os dados em serialzers e também o usuario que fez a requisicao
 
 

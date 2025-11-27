@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from chamados import views
+#Imports da API
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.chamado_listar, name='chamado_listar'),
-    path('chamados/',include('chamados.urls')),
-    
+    path('chamados/',include('chamados.urls')), 
 ]
 
