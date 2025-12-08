@@ -121,21 +121,48 @@
             width: 150px;
             height: 20px;
         }
+        .user{
+            margin-left: 65pc !important;
+            position: relative;
+            display: inline-block;
+}
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 35px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            min-width: 120px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 999;
+}
         
         
-        
-        
-
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <header> 
             <ul class="nav_flex">
-                 <li><a href="#" aria-current="page">Chamados</a></li>
-                 <li><button type="submit"  class="btn-1-s">Sair</button></li>
-                 
+                <li><a href="#" aria-current="page">Chamados</a></li>
+                {% load static %}
+                <li>
+                    <div class="user">
+                        <img src="{% static 'img/perfil.png' %} " width="20" height="20" onclick="menuS()"><a>{{user.username}}</a>
+                            <div id="dropdown" class="dropdown-menu">
+                            <a href="{% url 'logout' %}">🚪Sair</a>
+                            </div>
+                    
+                    </div>
+                </li>
+                
+                
+                <li><button type="submit"  class="btn-1-s">Sair</button></li>
+
+                
             </ul> 
         </header>
     </div>
@@ -161,7 +188,7 @@
                 {% csrf_token %}
                 <div class="body_list_t list_itens">
             
-                    <div class="col_1"><a href="{%url 'chamado_lista_detal' x.id%}">{{x.titulo}}</a></div>
+                    <div class="col_1"><a href="{%url 'chamado_lista_detal' x.id%}">{{x.titulo|truncatechars:13 }}</a></div>
                     <div class="col_2">{{x.usuario}}</div>
                     <div class="col_3 corAberto" >{{x.status}}</div>
                     <div class="col_4">{{x.prioridade}}</div>
@@ -176,4 +203,22 @@
             
     </div> 
 </body>
+
+<script>
+function menuS() {
+    const menu = document.getElementById("dropdown");
+    if (menu.style.display === "block")
+     {
+        menu.style.display = "none";
+    }
+     else {
+        menu.style.display = "block";
+    }
+}
+</script>
+
+
+
+
+
 </html>

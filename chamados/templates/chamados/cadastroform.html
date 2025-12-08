@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+      <!--bootstrap-->
+     <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+    >
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="error">{{error}}</div>
+    <div class="card shadow p-4" style="width: 420px; border-radius: 12px;">
+        <h3 class="text-center mb-4">Criar Conta</h3>
+    
+
+        <form method="post">
+        <!-- Ao invés de usar isto {{form.as_p} vou usar uma div para editar os campos do create-->
+            {% csrf_token %}
+
+            <!--Div para username-->
+            <div class="mb-3">
+                <label class="form-label">{{ form.username.label_tag }}</label>
+                {{ form.username }}<!--um gera texto e outro a form-->
+                <div class="text-danger small">{{ form.username.errors }}</div>
+            </div>
+            <!--Div para email-->
+            <div class="mb-3">
+                <label class="form-label">{{ form.email.label}}</label>
+                {{ form.email}}
+                {{ form.email.errors }}
+            </div>
+            <!--Div para password1-->
+            <div class="mb-3">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+            <!--Div para password12-->
+            <div class="mb-3">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-2">Cadastrar</button>
+            <p class="text-center mt-3">
+                Já tem conta?
+                <a href="">Entrar</a>
+            </p>
+        </form>
+    </div>
+
+   
+    
+    
+</body>
+</html>

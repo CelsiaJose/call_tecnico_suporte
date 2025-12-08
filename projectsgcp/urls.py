@@ -24,5 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.chamado_listar, name='chamado_listar'),
     path('chamados/',include('chamados.urls')), 
+    
+    path('accounts/login/' ,views.userlogin,name='login'),
 ]
 
