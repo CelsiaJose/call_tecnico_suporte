@@ -127,19 +127,19 @@ class chamadoViewset(viewsets.ModelViewSet):
 def cadastroUser(request):
     if request.method == 'POST':
         form = formCadastro(request.POST)# este campo ja grava username= xx
-                                                               #email igual a x e os outros
+                                                         #email igual a x e os outros
         if form.is_valid():# Já avalia ate a palavra pass
             user = form.save()
             Perfil.objects.create(user=user)
             login(request, user)
             return redirect("chamado_listar")
         else:
-            return render(request, "chamados/cadastroform.html", {"form": form})
+            return render(request, "chamados/cadastrouser.html", {"form": form})
 
     else:
         form = formCadastro()
 
-    return render(request, "chamados/cadastroform.html", {'form': form})
+    return render(request, "chamados/cadastrouser.html", {'form': form})
 
 ''' if request.method=='POST':
 

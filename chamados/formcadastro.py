@@ -7,17 +7,12 @@ class formCadastro(UserCreationForm):
     email = forms.EmailField(required=True)
     class Meta:
          model=User
-         fields= ('username','email','password','password2')
+         fields= ('username','email','password1','password2')
          widgets = {
             'username': forms.TextInput(attrs={
                 'placeholder': 'Nome de usuário',
                 'class': 'form-control'})}
-         labels = {
-            'username': 'Usuário',
-            'email': 'Email',
-            'password': 'Senha',
-            'password2': 'Confirme a senha',
-                 }
+        
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():

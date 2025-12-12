@@ -147,3 +147,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 5,
 }
+
+#permissao temporario do vscode para alterar migracao 
+#sudo chown -R $(whoami) /home/celsiatestdjangorest/sgcp/projectsgcp/chamados/migrations
+#sudo chmod -R u+rw /home/celsiatestdjangorest/sgcp/projectsgcp/chamados/migrations

@@ -25,27 +25,27 @@
 
             <!--Div para username-->
             <div class="mb-3">
-                <label class="form-label">{{ form.username.label_tag }}</label>
-                {{ form.username }}<!--um gera texto e outro a form-->
+                <label for="username">Usuário</label><!--um gera texto e outro a form-->
+                {{ form.username}}
                 <div class="text-danger small">{{ form.username.errors }}</div>
             </div>
             <!--Div para email-->
             <div class="mb-3">
-                <label class="form-label">{{ form.email.label}}</label>
+                <label for="email">Email</label>
                 {{ form.email}}
                 {{ form.email.errors }}
             </div>
             <!--Div para password1-->
             <div class="mb-3">
-                {{ form.password1.label_tag }}
+                <label for="password1">Senha</label>
                 {{ form.password1 }}
                 {{ form.password1.errors }}
             </div>
             <!--Div para password12-->
             <div class="mb-3">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-                {{ form.password2.errors }}
+                <label for="password2">Confirme a Senha</label>
+                {{form.password2}}
+                {{form.password2.errors}}
             </div>
             <button type="submit" class="btn btn-primary w-100 mt-2">Cadastrar</button>
             <p class="text-center mt-3">
