@@ -7,10 +7,112 @@
     <!--bootstrap-->
      <link 
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-        rel="stylesheet"
-    >
+        rel="stylesheet">
+    <style>
+        :root{ /* estilo aplicados ao HTML inteiro */ /*uso delas body {
+                                                                            background: var(--bg);
+                                                                        }*/
+            --bg:#f6f7fb;/* variavel para background do html */
+            --card:#ffffff; /* para as caixinhas visuais */
+            --accent:#2b6cb0; /* para as cores do botoes  */
+            --muted:#6b7280 /* textos apagados / cinza  */
+        }
+        body{
+            font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background:var(--bg); 
+            color:#111;margin:0;
+            padding:32px
+        }
+        .container{
+            max-width:880px;
+            margin:0 auto;
+            background-color: aquamarine;
+            
+        }
+        header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:18px
+        }
+        h1{
+            font-size:20px;
+            margin:0
+        }
+        .card{
+            background:var(--card);
+            border-radius:12px;
+            padding:20px;
+            box-shadow:0 6px 18px rgba(17,24,39,0.06)}
+        form{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:14px
+        }
+        label{
+            display:block;
+            font-size:13px;
+            color:var(--muted);
+            margin-bottom:6px
+        }
+        input[type=text], textarea, select{width:100%;
+            padding:10px;
+            border:1px solid #e6e9ef;
+            border-radius:8px;
+            font-size:14px
+        }
+        textarea{
+            min-height:120px;
+            resize:vertical
+        }
+        .full{
+            grid-column:1/-1
+        }
+        .actions{
+            display:flex;
+            gap:10px;
+            justify-content:flex-end;
+            margin-top:8px
+        }
+        .btn{
+            padding:10px 14px;
+            border-radius:8px;
+            border:0;
+            cursor:pointer;
+            font-weight:600
+        }
+        .btn-primary{
+            background:var(--accent);
+            color:white
+        }
+        .btn-ghost{
+            background:transparent;
+            border:1px solid #e6e9ef;
+            color:#111
+        }
+        .links{
+            display:flex;
+            gap:12px;
+            align-items:center
+        }
+        .small{
+            font-size:13px;
+            color:var(--muted)
+        }
+        .note{font-size:13px;
+            color:var(--muted);
+            margin-top:8px
+        }
+        @media (max-width:700px)
+        {
+            form{
+                grid-template-columns:1fr
+                }
+        }
+</style>
 </head>
 <body>
+    <!-- 
     <h1><a>Criar usuarios</a></h1>
     <form method="post">
         {% csrf_token %}
@@ -20,11 +122,83 @@
     </form>
     <h1> Lista de usuarios</h1>
 
-    <a href="{% url "chamado_listar" %}">voltar a lista de chamados</a>
+    <a href="{% url "chamado_listar" %}">voltar a lista de chamados</a>-->
+    <div class="container"><!-- div do body todo do container-->
+        <header>
+            <h1>Cadastrar Chamado</h1>
+            <nav class="links">
+                <a class="small" href="{% url "chamado_listar" %}">⬅ Voltar à lista de chamados</a>
+            </nav>
+        </header>
+        <!--formulario ou caixinha para o form ou os cards-->
 
+        <section class="card">
+        <!-- Se usar Django, mantenha action apontando para a view correta e inclua {% csrf_token %} -->
+            <form method="post">
+            {% csrf_token %}
+                <!--Div usuario-->
+                <div>
+                    <label for="usuario">Usuário</label>
+                    {{form.usuario}}
+                </div>
 
+                 <!--Campo tecnico-->
+                <div>
+                    <label for="tecnico">Técnico (responsável)</label>
+                     {{form.tecnico}}
+                    
+                </div>
 
+                <!--titulo do chamado-->
+                <div class="full">
+                    <label for="titulo">Título</label>
+                    <!--dois titulos o automatico e o manual
+                    <input id="titulo" name="titulo" type="text" placeholder="Resumo curto do problema" required> 
+                    -->
+                    <div >{{form.titulo}}</div>   
+                </div>
 
+                <!--Descriacao -->
+                <div class="full">
+                    <label for="descricao">Descrição</label>
+                    {{form.descricao}}
+                <!--</div>
+                prioridade do usuario 
+                <div>
+                    <label for="prioridade_usuario">Prioridade backup</label>
+
+                    Manual
+                    <select id="prioridade_usuario" name="prioridade_usuario">
+                    <option value="Baixa" selected>Baixa</option>
+                    <option value="Média">Média</option>
+                    <option value="Alta">Alta</option>
+                    </select>
+                    {{form.prioridade}}
+                </div> -->
+
+                <!--prioridade do usuario -->
+                </div>
+                <div>
+                <label for="prioridade">Qual é o nivel de prioridade? selecione</label>
+                    {{form.prioridade}}
+                </div>
+
+                <!--tempo de solucao -->
+                <div>
+                    <label for="tempo_solucao">Tempo solução (horas)</label>
+                    {{form.tempo_solucao}}
+                </div>
+
+                <p class="note full">Dica: a prioridade do sistema será calculada automaticamente se você tiver uma função no backend. Aqui recebemos a prioridade informada e o tempo estimado de solução.</p>
+
+                <!--butão  -->
+                <div class="actions full">
+                    <button type="button" class="btn btn-ghost" onclick="window.location.href=''">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </section>
+    </div>
 
 </body>
 </html>
