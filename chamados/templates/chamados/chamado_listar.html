@@ -4,142 +4,240 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
-       .container {
+    <style>
+        * {
+       
+        font-family: 'Inter', sans-serif;
+    }
+    body {
+        background-color: #e2e3e4ff;
+        color: #2b2929ff;
+    }
+    .body{
+            /*background-color: rgb(154, 154, 235);*/
+        max-width: 900px;   /* largura máxima da sua “tabela” */
+        margin: 0 auto;  
+        }
+    /*.body {
+        
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 0 15px;
+    }*/
+    .container {
+        display: flex;/*mudou a ponto*/
         max-width: 100%;
         background:rgb(9, 137, 211);
         height: 50px;
        
         }
-        header{
+    .nav_flex {
+       /*Itens do menu de cima*/
+        display: flex!important;
+        justify-content: space-between;/* um à esquerda, outro à direita */
+         /*justify-items: ;usado so em display grid*/
+        align-items:  center;
+        list-style: none;   /* tira as bolinhas */
+        padding: 0;
+        margin: 0;
+        width: 100%;
             
-                   /* ocupa toda altura da barra */
+       }
+    header{
+          /* ocupa toda altura da barra */
         display: flex;  
               /* header também vira flex */
         align-items: center;
-         height: 100%;    
+        height: 100%;  
         }
         
-       
-        .nav_flex {
-            display: flex!important;
-            justify-content: space-between;/* um à esquerda, outro à direita */
-            /*justify-items: ;usado so em display grid*/
-            align-items:  center;
-            list-style: none;   /* tira as bolinhas */
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            
-       }
-        .nav_flex a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem; /* opcional: melhora o clique */
-  }
-       
-       
-        body{
-
-        }
-
-        h1, h2 {
-            text-align: center;
-        }
-        .btn-1-s
-        {
-            background-color:rgb(9, 137, 211);
-            border:0;
-            color: rgb(255, 255, 255);
-           
-        }
-        .btn2_nc_div{
-                /*background-color: blueviolet;*/
-                width: 100%;
-                height: 40px;
-                margin-bottom: 30px;
-        }
-        .btn2_nc{
-                background-color: rgb(23, 143, 223);
-                width: 150px;
-                text-align: left;
-                height: 40px;
-                border-radius: 5px;
-                margin-bottom: 50px;
-                
-        }
-        
-        .body{
-            /*background-color: rgb(154, 154, 235);*/
-            max-width: 900px;   /* largura máxima da sua “tabela” */
-            margin: 0 auto;  
-        }
-        .body_list_t{
-            /*background-color: rgb(143, 172, 141);*/
-            height: 100%;
-            display: flex;
-            padding-left: 10px;
-            margin: 0 ;  
-            align-items: center;
-
-        }
-        .list_itens{
-            display: flex;
-            /*background-color: rgb(207, 124, 23);*/
-            padding-left: 10px;
-            
-
-        }
-        .col_1{
-           /* background-color: aquamarine;*/
-          
-            width: 150px;
-            height: 20px;
-        }
-        .col_2{
-           /* background-color: rgb(13, 119, 84);*/
-            width: 200px;
-            height: 20px;
-            
-        }
-        .col_3{
-            /*background-color: rgb(11, 236, 48);*/
-            width: 100px;
-            height: 20px;
-        }
-        .corAberto{
-            background-color: rgb(149, 247, 149);
-           /* border: 1px solid black;*/
-            margin-bottom: 3px;
-            border-radius: 5px;
-            margin-right: 10px;
-            height: 25px;
-        }
-        .col_4{
-           /* background-color: rgb(29, 46, 40);*/
-            width: 150px;
-            height: 20px;
-        }
-        .user{
+    .container a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+    }  
+    .user{
             margin-left: 65pc !important;
             position: relative;
             display: inline-block;
-}
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 35px;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            min-width: 120px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            z-index: 999;
-}
+        }
+    .user img {
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 5px;
         
+        }
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;/*deixa um espaço a direita e o empurra a esquerda*/
+        top: 35px; /*Para deixar espaço da div*/
+        border: 1px solid #8ed8faff;
+        border-radius: 6px;/*border-radius: 8px;*/
+        min-width: 100px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);/*box-shadow: 0 4px 12px rgba(0,0,0,0.1);*/
+        z-index: 999;/* z-index: 1000;*/
+            /*agora*/
+        background-color:rgba(201, 232, 250, 1);
+           
+        }
+    .dropdown-menu a { 
+            
+        color: #131212ff;*/
+        }
+    .nav_flex a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem; /* opcional: melhora o clique */
+  }
+     
+    .dropdown-menu a:hover {
+            
+        background: #5bd1f5ff;
+            
+        }
+    .btn-1-s{
+        background-color:rgba(74, 182, 245, 1);
+        border:0;
+        color: rgb(255, 255, 255);
+        border-radius:6px
+        }
+     
+    h1,h2{
+        text-align: center;
+        margin-bottom: 25px;
+        color: #1976d2;
+    }
+    .btn2_nc_div{ /*Div do btn add*/
+        /*background-color: blueviolet;*/
+        width: 100%;
+        height: 40px;
+        margin-bottom: 30px;
+        } 
+    .btn-new {
+        display: inline-block;
+        background-color: rgb(23, 143, 223);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 25px;
+        transition: background 0.3s;
+       }
+       /*.btn2_nc{
         
+        width: 150px;
+        text-align: left;
+        height: 40px;
+        border-radius: 5px;
+        margin-bottom: 50px;
+                
+        }*/
+    .btn-new:hover {
+        background-color: #2d5204ff;
+    }
+    .card_t{
+        /*background-color: rgb(143, 172, 141);*/
+        height: 100%;
+        display: flex;
+        padding-left: 10px;
+        margin: 0 ;  
+        align-items: center;
+
+        }
+
+    .list_itens{
+        display: flex;
+        /*background-color: rgb(207, 124, 23);*/
+        padding-left: 10px;
+            
+        }
+    .card_content{
+        background-color: #f79676ff;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.2s;
+        
+    }
+    .card_content a{
+        text-decoration:none;
+    }
+    .card_content:hover {
+        transform: translateY(-2px);/*nao vi mudanca*/
+    }
+    .card_content div {
+        flex: 1;
+        padding: 0 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-decoration:none;
+    }
+    .col_1{
+       /* background-color: aquamarine;*/
+        width: 150px;
+        height: 20px;
+        padding-left:10px;
+        }
+    .col_2{
+        /*background-color: rgb(13, 119, 84);*/
+        padding-left:50px;
+        width: 200px;
+        height: 20px;
+            
+        }
+    .col_3{
+        /*background-color: rgb(11, 236, 48);*/
+        width: 100px;
+        height: 20px;
+        padding-left:60px;
+        }
+    .col_4{
+       /* background-color: rgba(171, 221, 204, 1);*/
+        width: 150px;
+        height: 20px;
+        padding-left:60px;
+        }  
+    .ABERTO { background-color: #a8e6a1; color: #2e7d32; }
+    .FECHADO { background-color: #f8bfbf; color: #c62828; }
+    .EM_ANDAMENTO { background-color: #ffe082; color: #ff8f00; }
+    .corAberto{
+        background-color: rgb(149, 247, 149);
+        /* border: 1px solid black;*/
+        margin-bottom: 3px;
+        border-radius: 5px;
+        margin-right: 10px;
+        height: 25px;
+        }
+    .status {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-weight: 600;
+        text-align: center;
+        width: 100px;
+    }
+      .btn-delete {
+        background-color: #ef5350;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .btn-delete:hover {
+        background-color: #e53935;
+    }
+   
     </style>
 </head>
 
@@ -157,8 +255,7 @@
                             </div>
                     
                     </div>
-                </li>
-                
+                </li> 
                 
                 <li><button type="submit"  class="btn-1-s">Sair</button></li>
 
@@ -167,12 +264,13 @@
         </header>
     </div>
     <div class="body">
-          <h1>Lista de Chamados a téncios </h1>
+        <h1>Lista de Chamados a téncios </h1>
         <div class="btn2_nc_div">
-            <a href="{% url "chamado_criar" %}"><button type="submit" class="btn2_nc">Novo Chamado</button></a>
+            <!--<a href="{% url "chamado_criar" %}"><button type="submit" class="btn2_nc">Novo Chamado</button></a>-->
+            <a href="{% url 'chamado_criar' %}" class="btn-new">➕ Novo Chamado</a>
         </div>
           <!-- Cabeçalho da tabela -->
-        <div class="body_list_t">
+        <div class="card_t">
             <div class="col_1"><b>Titulo</b></div>
             <div class="col_2"><b>Usuario</b></div>
             <div class="col_3"><b>Status</b></div>
@@ -186,13 +284,13 @@
            
             <form method="POST" action="{% url 'chamado_deletar' x.id%}">
                 {% csrf_token %}
-                <div class="body_list_t list_itens">
+                <div class="card_t card_content">
             
                     <div class="col_1"><a href="{%url 'chamado_lista_detal' x.id%}">{{x.titulo|truncatechars:13 }}</a></div>
                     <div class="col_2">{{x.usuario}}</div>
-                    <div class="col_3 corAberto" >{{x.status}}</div>
+                    <div class="col_3 corAberto status" >{{x.status}}</div>
                     <div class="col_4">{{x.prioridade}}</div>
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este chamado?');">Apagar</button>
+                    <button type="submit" class="btn-delete" onclick="return confirm('Tem certeza que deseja deletar este chamado?');">Apagar</button>
                     
                 </div>
             </form>
@@ -216,9 +314,5 @@ function menuS() {
     }
 }
 </script>
-
-
-
-
 
 </html>

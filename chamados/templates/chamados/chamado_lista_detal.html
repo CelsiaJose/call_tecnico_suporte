@@ -5,79 +5,197 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <style>
-.body_justify{
-    margin-left: 25pc;
-    background-color: rgb(240, 248, 250);
-    margin-right: 25pc;
-    padding-left: 10pc;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    
-}
-.titulo_P{
-    text-align: center;
-    background-color: rgb(133, 207, 241);
-    margin-bottom: 50px;
-}
-.prioridade{
-    width: 140px;
-    display: flex;
-    background-color: rgb(245, 206, 206);
-   /* margin: 0 auto;/*para o centro*/
-    height: 30px;/*para centralizar a div*/
-    align-items: center;/*para centralizar a frase dentro*/
-    justify-content: center;/*centralizar na horizontal*/
-    color: red;
-    margin-left: 3pc;
-}
-.flex{
-    display: flex;
-    
-}
-.titulo{
-    margin-right: 1pc;
-
-}
-.aberto{
-    background-color: rgb(172, 211, 248);
-    color: rgb(5, 113, 238);
-}
-.space_betwen{
-    /*display: flex;
-    align-items: center;*/
-    gap: 8pc;
-    
-}
-.btn_back {
-            background-color: #777;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            cursor: pointer;
-            padding: 5px;
-            margin-right: 10px;
+<style>
+    * {
+       
+        font-family: 'Inter', sans-serif;
+    }
+    body {
+        background-color: #e2e3e4ff;
+        color: #2b2929ff;
+    }
+    .body{
+            /*background-color: rgb(154, 154, 235);*/
+        max-width: 900px;   /* largura máxima da sua “tabela” */
+        margin: 0 auto;  
         }
- /*.btn_back:hover {
-            background-color: #555;
-        }*/
-  .btn_save {
+    .body_justify{
+        margin-left: 25pc;
+        background-color: rgb(240, 248, 250);
+        margin-right: 25pc;
+        padding-left: 10pc;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        
+    }
+    .container {
+        display: flex;/*mudou a ponto*/
+        max-width: 100%;
+        background:rgb(9, 137, 211);
+        height: 50px;
+       
+        }
+    .nav_flex {
+       /*Itens do menu de cima*/
+        display: flex!important;
+        justify-content: space-between;/* um à esquerda, outro à direita */
+         /*justify-items: ;usado so em display grid*/
+        align-items:  center;
+        list-style: none;   /* tira as bolinhas */
+        padding: 0;
+        margin: 0;
+        width: 100%;
+            
+       }
+    header{
+          /* ocupa toda altura da barra */
+        display: flex;  
+              /* header também vira flex */
+        align-items: center;
+        height: 100%;  
+        }
+        
+    .container a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+    }  
+    .user{
+            margin-left: 65pc !important;
+            position: relative;
+            display: inline-block;
+        }
+    .user img {
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 5px;
+        
+        }
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;/*deixa um espaço a direita e o empurra a esquerda*/
+        top: 35px; /*Para deixar espaço da div*/
+        border: 1px solid #8ed8faff;
+        border-radius: 6px;/*border-radius: 8px;*/
+        min-width: 100px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);/*box-shadow: 0 4px 12px rgba(0,0,0,0.1);*/
+        z-index: 999;/* z-index: 1000;*/
+            /*agora*/
+        background-color:rgba(201, 232, 250, 1);
+           
+        }
+    .dropdown-menu a { 
+            
+        color: #131212ff;*/
+        }
+    .nav_flex a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem; /* opcional: melhora o clique */
+  }
+     
+    .dropdown-menu a:hover {
+            
+        background: #5bd1f5ff;
+            
+        }
+    .btn-1-s{
+        background-color:rgba(74, 182, 245, 1);
+        border:0;
+        color: rgb(255, 255, 255);
+        border-radius:6px
+        }
+     
+    h1,h2{
+        text-align: center;
+        margin-bottom: 25px;
+        color: #1976d2;
+    }
+    .titulo_P{
+        text-align: center;
+        background-color: rgb(133, 207, 241);
+        margin-bottom: 50px;
+    }
+    .prioridade{
+        width: 140px;
+        display: flex;
+        background-color: rgb(245, 206, 206);
+    /* margin: 0 auto;/*para o centro*/
+        height: 30px;/*para centralizar a div*/
+        align-items: center;/*para centralizar a frase dentro*/
+        justify-content: center;/*centralizar na horizontal*/
+        color: red;
+        margin-left: 3pc;
+    }
+    .flex{
+        display: flex;
+        
+    }
+    .titulo{
+        margin-right: 1pc;
+
+    }
+    .aberto{
+        background-color: rgb(172, 211, 248);
+        color: rgb(5, 113, 238);
+    }
+    .space_betwen{
+        /*display: flex;
+        align-items: center;*/
+        gap: 8pc;
+        
+    }
+    .btn_back {
+                background-color: #777;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                text-decoration: none;
+                cursor: pointer;
+                padding: 5px;
+                margin-right: 10px;
+            }
+    /*.btn_back:hover {
+                background-color: #555;
+            }*/
+    .btn_save {
             background-color: rgb(9, 137, 211);
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             padding: 5px;
-            text-decoration: none;
-        }
+            text-decoration: none;}
 
 </style>
 </head>
 <body>
+     <div class="container">
+        <header> 
+            <ul class="nav_flex">
+                <li><a href="#" aria-current="page">Chamados</a></li>
+                {% load static %}
+                <li>
+                    <div class="user">
+                        <img src="{% static 'img/perfil.png' %} " width="20" height="20" onclick="menuS()"><a>{{user.username}}</a>
+                            <div id="dropdown" class="dropdown-menu">
+                            <a href="{% url 'logout' %}">🚪Sair</a>
+                            </div>
+                    
+                    </div>
+                </li> 
+                
+                <li><button type="submit"  class="btn-1-s">Sair</button></li>
+
+                
+            </ul> 
+        </header>
+    </div>
     <h1 class="titulo_P">Detalhe do Chamado</h1>
     <div class="body_justify" >
         <div class="flex">
             <h3 class="titulo">Titulo:</h3>
-            <h3>{{chamado_detal}}</h3>
+            <h3>{{chamado_detal.titulo}}</h3>
         </div>
         <div class="prioridade">
             <h4>Prioridade :</h4>
@@ -92,11 +210,15 @@
             <div class="infgcontent">
                 <div class="flex">
                     <p class="titulo">Usuario:</p>
-                    <p>{{chamado_detal.usuario}}</p>
+                    {{chamado_detal.usuario}}</p>
                 </div>
                 <div class="flex">
                     <p class="titulo">Técncio :</p>
-                    <p>{{chamado_detal.tecnico}}</p>
+                   <!--- {% if chamado_detal.tecnico %}
+                    <p>{{ chamado_detal.tecnico.username }}</p>
+                {% else %}
+                    <p>—</p>
+                {% endif %}-->
                 </div>
                 <div class="flex">
                     <p class="titulo">Tempo de Solução :</p>

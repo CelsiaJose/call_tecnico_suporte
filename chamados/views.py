@@ -20,8 +20,10 @@ from rest_framework.permissions import IsAuthenticated
 
 @login_required
 def chamado_listar(request):
-
+    
+    
     chamados = Chamados.objects.all()
+    
     return render (request, 'chamados/chamado_listar.html',{'chamados':chamados})
 
 
@@ -40,6 +42,9 @@ def chamados_Criar(request):
             print("Preencha devidamente")#Mostra os erros 
     else:
         form=formChamados()
+        form.fields['usuario'].initial = request.user  # preenche o campo
+        form.fields['usuario'].disabled = True 
+        
         
     return render(request ,'chamados/chamado_criar.html',{'form':form})
 
