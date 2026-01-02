@@ -18,6 +18,8 @@ urlpatterns = [
     path('cadastrar/',views.cadastroUser, name='cadastroUser'),
     path('logout/',views.userlogout ,name="logout"),
     path('login/',views.userlogin ,name="login"),
+    path('index/',views.paginaIndex ,name="paginaIndex"),
+    path('navbar/',views.navbar ,name="navbar"),
     
     #url da app
     path('api/', include(router.urls)),

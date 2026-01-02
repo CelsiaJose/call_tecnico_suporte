@@ -21,10 +21,13 @@ from rest_framework.permissions import IsAuthenticated
 @login_required
 def chamado_listar(request):
     
-    
+    status=request.GET.get('status')# guarda a requisicao que vem da url exemplo status==aqualwuercoisa
     chamados = Chamados.objects.all()
     
-    return render (request, 'chamados/chamado_listar.html',{'chamados':chamados})
+    if status:
+        chamados=chamados.filter(status=status)
+    
+    return render (request, 'chamados/chamado_listar.html',{'chamados':chamados,'status_select':status})
 
 
 @login_required
@@ -197,4 +200,9 @@ def userlogin(request):
 
     return render(request, "chamados/cadastro_login.html",{'form': form})
 
+def paginaIndex(request):
 
+    return render(request,"chamados/chamados_index.html")
+
+def navbar(request):
+    return render(request,"chamado_navbar.html")

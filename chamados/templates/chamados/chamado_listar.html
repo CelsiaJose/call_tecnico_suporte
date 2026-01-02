@@ -3,36 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
         * {
        
         font-family: 'Inter', sans-serif;
+       
     }
-    body {
-        background-color: #e2e3e4ff;
-        color: #2b2929ff;
-    }
+    
     .body{
-            /*background-color: rgb(154, 154, 235);*/
+        
         max-width: 900px;   /* largura máxima da sua “tabela” */
         margin: 0 auto;  
+        margin-top: 140px;
+        font-family: 'Inter', sans-serif;
         }
-    /*.body {
-        
-        max-width: 900px;
-        margin: 30px auto;
-        padding: 0 15px;
-    }*/
-    .container {
-        display: flex;/*mudou a ponto*/
-        max-width: 100%;
-        background:rgb(9, 137, 211);
-        height: 50px;
-       
-        }
+  
     .nav_flex {
        /*Itens do menu de cima*/
         display: flex!important;
@@ -53,46 +41,11 @@
         height: 100%;  
         }
         
-    .container a {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-    }  
-    .user{
-            margin-left: 65pc !important;
-            position: relative;
-            display: inline-block;
-        }
-    .user img {
-        border-radius: 50%;
-        vertical-align: middle;
-        margin-right: 5px;
-        
-        }
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        right: 0;/*deixa um espaço a direita e o empurra a esquerda*/
-        top: 35px; /*Para deixar espaço da div*/
-        border: 1px solid #8ed8faff;
-        border-radius: 6px;/*border-radius: 8px;*/
-        min-width: 100px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);/*box-shadow: 0 4px 12px rgba(0,0,0,0.1);*/
-        z-index: 999;/* z-index: 1000;*/
-            /*agora*/
-        background-color:rgba(201, 232, 250, 1);
-           
-        }
     .dropdown-menu a { 
             
-        color: #131212ff;*/
+        color: #131212ff;
         }
-    .nav_flex a {
-        color: white;
-        text-decoration: none;
-        padding: 0.5rem 1rem; /* opcional: melhora o clique */
-  }
-     
+  
     .dropdown-menu a:hover {
             
         background: #5bd1f5ff;
@@ -105,40 +58,39 @@
         border-radius:6px
         }
      
-    h1,h2{
+    h1{
         text-align: center;
         margin-bottom: 25px;
-        color: #1976d2;
+        color: #00070e;
     }
     .btn2_nc_div{ /*Div do btn add*/
         /*background-color: blueviolet;*/
         width: 100%;
         height: 40px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
+        
         } 
+
+    
     .btn-new {
         display: inline-block;
-        background-color: rgb(23, 143, 223);
-        color: white;
+        text-align: center;
+        line-height: 50px; 
+        color: rgb(15, 15, 15);
         padding: 10px 20px;
-        border: none;
+        border:1px solid;
         border-radius: 8px;
         text-decoration: none;
         font-weight: 600;
-        margin-bottom: 25px;
         transition: background 0.3s;
-       }
-       /*.btn2_nc{
+        border-radius: 100px;
+        width: 260px;
+        height: 75px;
         
-        width: 150px;
-        text-align: left;
-        height: 40px;
-        border-radius: 5px;
-        margin-bottom: 50px;
-                
-        }*/
+       }
+       
     .btn-new:hover {
-        background-color: #2d5204ff;
+        background-color: rgb(252, 203, 175);
     }
     .card_t{
         /*background-color: rgb(143, 172, 141);*/
@@ -147,6 +99,8 @@
         padding-left: 10px;
         margin: 0 ;  
         align-items: center;
+        margin-top: 20px;
+        
 
         }
 
@@ -157,8 +111,10 @@
             
         }
     .card_content{
-        background-color: #f79676ff;
-        border-radius: 10px;
+        
+        
+        background: #ffffff;
+        border-radius: 12px;
         padding: 15px;
         margin-bottom: 15px;
         display: flex;
@@ -196,84 +152,128 @@
             
         }
     .col_3{
-        /*background-color: rgb(11, 236, 48);*/
-        width: 100px;
+        
+        width: 130px;
         height: 20px;
-        padding-left:60px;
+        padding-left:80px;
+    
+        
         }
+       
     .col_4{
-       /* background-color: rgba(171, 221, 204, 1);*/
+        /*background-color: rgba(171, 221, 204, 1);*/
         width: 150px;
         height: 20px;
-        padding-left:60px;
-        }  
-    .ABERTO { background-color: #a8e6a1; color: #2e7d32; }
-    .FECHADO { background-color: #f8bfbf; color: #c62828; }
-    .EM_ANDAMENTO { background-color: #ffe082; color: #ff8f00; }
-    .corAberto{
-        background-color: rgb(149, 247, 149);
-        /* border: 1px solid black;*/
-        margin-bottom: 3px;
-        border-radius: 5px;
+        padding-left:50px;
+        margin-left: 10px;
         margin-right: 10px;
-        height: 25px;
         }
-    .status {
+        
+       .col_4.space{
+         padding-left:40px;
+
+           
+            
+            text-align: center;  
+        }
+
+         .status {
         padding: 5px 10px;
         border-radius: 15px;
         font-weight: 600;
         text-align: center;
         width: 100px;
     }
-      .btn-delete {
-        background-color: #ef5350;
-        color: white;
+   
+    .status-aberto {
+    background-color: #05f88b;
+    color: #0f5132;
+   }
+   .status-aberto::before {
+    content: "✔";
+}
+
+/* EM ANDAMENTO */
+   .status-andamento {
+    background-color: #f8c10a;
+    color: #664d03;
+   }
+    .status-andamento::before {
+    content: "⏳";
+}
+
+/* FECHADO */
+  .status-fechado {
+    background-color: #f7091d;
+    color: #310105;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    }
+    .status-fechado::before {
+    content: "✔ ✔";
+    }
+   
+    .btn-delete {
+        background-color: #e74c3c;
+        color: #ece6e7ff;
         border: none;
         border-radius: 8px;
         padding: 6px 12px;
         cursor: pointer;
         transition: background 0.3s;
+     
     }
     .btn-delete:hover {
-        background-color: #e53935;
+        background: #af2b02ff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
    
+  select {
+  
+    padding: 3px;
+    width: 80px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+   .wrap-text {
+    white-space: normal; /* Permite quebras de linha */
+    word-wrap: break-word; /* Quebra palavras grandes se necessário */
+    overflow-wrap: break-word; /* Compatível com navegadores modernos */
+}
+   
     </style>
-</head>
-
+</head>		
 <body>
-    <div class="container">
-        <header> 
-            <ul class="nav_flex">
-                <li><a href="#" aria-current="page">Chamados</a></li>
-                {% load static %}
-                <li>
-                    <div class="user">
-                        <img src="{% static 'img/perfil.png' %} " width="20" height="20" onclick="menuS()"><a>{{user.username}}</a>
-                            <div id="dropdown" class="dropdown-menu">
-                            <a href="{% url 'logout' %}">🚪Sair</a>
-                            </div>
-                    
-                    </div>
-                </li> 
-                
-                <li><button type="submit"  class="btn-1-s">Sair</button></li>
-
-                
-            </ul> 
-        </header>
-    </div>
+    <!--div Criada agora-->
+    {% extends 'base.html' %}
+   
+    {% block content %}
     <div class="body">
-        <h1>Lista de Chamados a téncios </h1>
+        
+        <h1><strong>Lista de Chamados a téncios </strong></h1>
         <div class="btn2_nc_div">
             <!--<a href="{% url "chamado_criar" %}"><button type="submit" class="btn2_nc">Novo Chamado</button></a>-->
             <a href="{% url 'chamado_criar' %}" class="btn-new">➕ Novo Chamado</a>
         </div>
+      
+
           <!-- Cabeçalho da tabela -->
         <div class="card_t">
             <div class="col_1"><b>Titulo</b></div>
             <div class="col_2"><b>Usuario</b></div>
             <div class="col_3"><b>Status</b></div>
+            <div class="filtrar" > 
+                <form method="get">
+                        <select name="status" class="filtro" onchange="this.form.submit()">
+                            <option value="Todos">Todos</option>
+                            <option value="ABERTO" {% if status_select == 'ABERTO' %}selected{% endif %}">Aberto</option>
+                            <option value="Em_ANDAMENTO" {% if status_select == 'EM ANDAMENTO' %}selected{% endif %}>Em andamento</option>
+                            <option value="FEXADO" {% if status_select == 'FECHADO' %}selected{% endif %}>Fechado</option>
+                        </select>
+            </div>
             <div class="col_4"><b>Prioridade</b></div>
             
         </div>
@@ -286,10 +286,20 @@
                 {% csrf_token %}
                 <div class="card_t card_content">
             
-                    <div class="col_1"><a href="{%url 'chamado_lista_detal' x.id%}">{{x.titulo|truncatechars:13 }}</a></div>
+                    <div class="col_1"><a class="wrap-text" href="{%url 'chamado_lista_detal' x.id%}">{{x.titulo}}</a></div>
                     <div class="col_2">{{x.usuario}}</div>
-                    <div class="col_3 corAberto status" >{{x.status}}</div>
-                    <div class="col_4">{{x.prioridade}}</div>
+                    <div class="col_3 status space
+                       {% if x.status == 'ABERTO' %}
+                        status-aberto
+                        
+                        {% elif x.status == 'Em_ANDAMENTO' %}
+                            status-andamento
+                        {% elif x.status == 'FEXADO' %}
+                            status-fechado
+                        {% endif %}" >{{x.status}}
+                    </div>
+                 
+                    <div class="col_4 space" >{{x.prioridade}}</div>
                     <button type="submit" class="btn-delete" onclick="return confirm('Tem certeza que deseja deletar este chamado?');">Apagar</button>
                     
                 </div>
@@ -300,19 +310,6 @@
         {% endif %}
             
     </div> 
+    {% endblock %}
 </body>
-
-<script>
-function menuS() {
-    const menu = document.getElementById("dropdown");
-    if (menu.style.display === "block")
-     {
-        menu.style.display = "none";
-    }
-     else {
-        menu.style.display = "block";
-    }
-}
-</script>
-
 </html>
