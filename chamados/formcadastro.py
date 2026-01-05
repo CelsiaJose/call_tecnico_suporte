@@ -7,7 +7,7 @@ class formCadastro(UserCreationForm):
     email = forms.EmailField(required=True)
     class Meta:
          model=User
-         fields= ('username','email','password1','password2')
+         fields= ('username','email','password','password1')
          widgets = {
             'username': forms.TextInput(attrs={
                 'placeholder': 'Nome de usuário',

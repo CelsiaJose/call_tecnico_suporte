@@ -30,8 +30,20 @@
     
  .user{
     position: relative;
-    display: inline-block;
+    display:flex;
+    space-between:5px;
   }
+  .btn1{
+    border-radius:15px;
+   
+  }
+  .btn-primary1{
+    background-color: #fcdea8ff;
+    height:50important;
+
+
+  }
+
   .cid-v5wRJeJ7Gb  {
   z-index: 1000;
   width: 100%;
@@ -593,6 +605,30 @@
     padding: 1rem;
   }
 }
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+}
+
+.nav-link.active {
+    font-weight: 600;
+    border-bottom: 3px solid #fff;
+    pointer-events: none; /* impede clique */
+    opacity: 0.9;
+
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ffab4b; /* azul Bootstrap */
+    border-radius: 2px;
+}
 </style>
 <body>
   
@@ -623,7 +659,8 @@
       <div class="collapse navbar-collapse opacityScroll" id="navbarSupportedContent" style="">
         <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
           <li class="nav-item">
-            <a class="nav-link link text-black display-4" href="/chamados/listar/">Chamados</a>
+            <a href="/chamados/listar/" class="nav-link link text-black display-4
+             {% if request.resolver_match.url_name == 'chamado_listar' %}active{% endif %}">Chamados</a>
           </li>
           <li class="nav-item">
             <a class="nav-link link text-black display-4" href="#" aria-expanded="false">Tecnicos</a>
@@ -634,13 +671,15 @@
         </ul>
 
         <div class="user">
-          <img src="/static/img/perfil.png " width="20" height="20" onclick="menuS()"><a>{{user.username}}</a>
-             <div id="dropdown" class="dropdown-menu">
-                <a href="/chamados/logout/">🚪Sair</a>
-              </div>
+          <div class='imguser'><img src="/static/img/perfil.png " width="20" height="20" onclick="menuS()"></div>
+          <div><a>{{user.username}}</a></div>
+
+          <div id="dropdown" class="dropdown-menu">
+            <a href="/chamados/logout/">🚪Sair</a>
+          </div>
         </div>
         <div class="navbar-buttons mbr-section-btn">
-          <a class="btn btn-primary display-4" href="{% url 'login'%}">Login</a>
+          <a class="btn1 btn-primary1 display-4" href="/chamados/logout">Logout</a>
         </div>
       </div>
     </div>
@@ -656,7 +695,8 @@
   <script src="https://ai.mobirise.com/assets/startm5/theme/js/script.js?v=m3frcrn2"></script>
   <script src="https://ai.mobirise.com/assets/startm5/formoid/formoid.min.js?v=m3frcrn2"></script>
   <script src="https://ai.mobirise.com/assets/preview.js"></script>
-  <script>
+
+<script>
 
     (function(){
       var animationInput = document.createElement('input');
@@ -665,7 +705,7 @@
       document.body.append(animationInput);
     })();
 
-  </script>
+</script>
 
 </body>
 </html>

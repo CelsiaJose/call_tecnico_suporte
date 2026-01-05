@@ -177,7 +177,7 @@ def cadastroUser(request):
 def userlogout(request):
     form = formCadastro(request.POST)
     logout(request) # entra um request e ele sai deste request 
-    return render(request, "chamados/cadastroform.html", {'form': form})
+    return render(request, "chamados/cadastro_login.html", {'form': form})
 
 def userlogin(request):
    
