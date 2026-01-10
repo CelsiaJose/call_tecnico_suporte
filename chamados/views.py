@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate
 
 
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
+from functools import wraps # pARA EMBRULHAR A FUNCAO ORIGINAL E EXECUTAR ALGUMAS REGRAS ANTES
 from .forms import formChamados
 from .formseditar import formChamadoseditar
 from .formcadastro import formCadastro
@@ -18,7 +20,20 @@ from .serializers import UserSerializer,ChamadoSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
+                      
+def tecnico_requerid(view_func):
+    @wraps(view_func)
+    def wrapper(request, *args, **kwargs):
+        if request.user.is_authenticated and (
+            request.user.groups.filter(name='tecnicos').exists()
+            or request.user.is_staff
+        ):
+            return view_func(request, *args, **kwargs)
+        return redirect('chamado_listar')
+    return wrapper
+
 @login_required
+
 def chamado_listar(request):
     
     status=request.GET.get('status')# guarda a requisicao que vem da url exemplo status==aqualwuercoisa
@@ -73,7 +88,7 @@ def chamado_editar(request,id):
         form=formChamadoseditar(instance=chamado_editar)
         
     return render(request,'chamados/chamado_editar.html',{'form':form})
-
+@tecnico_requerid
 def chamado_deletar(request,id):
     chamado_rm=get_object_or_404(Chamados,id=id)
 
@@ -82,6 +97,95 @@ def chamado_deletar(request,id):
         return redirect('chamado_listar') 
 
     #return render(request, 'chamados/chamado_confirm_delete.html', {'chamado': chamado})
+
+
+    # Fazendo Filtragens para aapp
+
+
+def cadastroUser(request):
+    if request.method == 'POST':
+        form = formCadastro(request.POST)# este campo ja cria uma instancia temporariamente dos dados username= xx
+                                                         #email igual a x e os outros
+        if form.is_valid():# Já avalia os dados da instancia criada mas nao grava ainda nada ate a palavra pass
+            user = form.save() # user.emal,user.password etcAgora assim grava , cria um registo na tabela pelo models 
+            Perfil.objects.create(user=user)
+            #quero que antes do login este usuario criado seja adicionado a um grupo automaticamente
+            grupo_clientes=Group.objects.get(name='clientes')
+            #Associar este usuario ao grupo criado
+            user.groups.add(grupo_clientes)
+            login(request, user)
+            return redirect("chamado_listar")
+        else:
+            return render(request, "chamados/cadastrouser.html", {"form": form})
+
+    else:
+        form = formCadastro()
+
+    return render(request, "chamados/cadastrouser.html", {'form': form})
+
+''' if request.method=='POST':
+
+        username=request.POST["username"]
+        print(request.POST)
+        email=request.POST["email"]
+        password1=request.POST["password1"]
+        password2=request.POST["password2"]
+
+        if password1 != password2:
+
+            return render(request, "chamados/cadastroform.html", {"error": "Senhas não coincidem."})
+        if User.objects.filter(email=email).exists():# Se lá nos usarios ja tiver este email entao diser nao entre e vai logar
+            return render(request, "chamados/cadastroform.html", {"error": "Usuário já existe."})
+
+        user=User.objects.create_user(username=username,email=email,password=password1)
+        Perfil.objects.create(user=user) #este usuario no modelo perfil vai se guardado no campo user
+        login(request, user)
+        return redirect("chamado_listar")
+    else:
+       form=formCadastro()
+
+    return render(request, 'chamados/cadastroform.html',{'form':form})'''
+
+  
+
+def userlogout(request):
+
+
+    logout(request) # entra um request e ele sai deste request 
+    
+    #return render(request, "chamados/chamados_index.html")
+    return redirect('paginaIndex')
+    
+
+
+
+def userlogin(request):
+   
+    if request.method=="POST":
+        
+        form = formCadastro(request.POST)
+
+        username=request.POST.get('username')
+        password1=request.POST.get('password')
+        user = authenticate(request, username=username, password=password1)
+        if user is not None:
+            login(request, user)
+            return redirect("chamado_listar")
+        else:
+            return render(request, "chamados/cadastro_login.html", {
+                "error": "Usuário ou senha incorretos.",'form':form })
+                      
+    else:
+        form = formCadastro()
+
+    return render(request, "chamados/cadastro_login.html",{'form': form})
+
+def paginaIndex(request):
+
+    return render(request,"chamados/chamados_index.html")
+
+def navbar(request):
+    return render(request,"chamado_navbar.html")
 
 
 # Views do ViewSet
@@ -128,81 +232,3 @@ class chamadoViewset(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         # Quando criar um chamado pela API, usa o usuário logado como "usuario"
         serializer.save(usuario=self.request.user) #Ou seja: não precisa o cliente enviar o usuário no JSON — o backend define sozinho.O usuario logado,ou seja salva os dados em serialzers e também o usuario que fez a requisicao
-
-    # Fazendo Filtragens para aapp
-
-
-def cadastroUser(request):
-    if request.method == 'POST':
-        form = formCadastro(request.POST)# este campo ja grava username= xx
-                                                         #email igual a x e os outros
-        if form.is_valid():# Já avalia ate a palavra pass
-            user = form.save()
-            Perfil.objects.create(user=user)
-            login(request, user)
-            return redirect("chamado_listar")
-        else:
-            return render(request, "chamados/cadastrouser.html", {"form": form})
-
-    else:
-        form = formCadastro()
-
-    return render(request, "chamados/cadastrouser.html", {'form': form})
-
-''' if request.method=='POST':
-
-        username=request.POST["username"]
-        print(request.POST)
-        email=request.POST["email"]
-        password1=request.POST["password1"]
-        password2=request.POST["password2"]
-
-        if password1 != password2:
-
-            return render(request, "chamados/cadastroform.html", {"error": "Senhas não coincidem."})
-        if User.objects.filter(email=email).exists():# Se lá nos usarios ja tiver este email entao diser nao entre e vai logar
-            return render(request, "chamados/cadastroform.html", {"error": "Usuário já existe."})
-
-        user=User.objects.create_user(username=username,email=email,password=password1)
-        Perfil.objects.create(user=user) #este usuario no modelo perfil vai se guardado no campo user
-        login(request, user)
-        return redirect("chamado_listar")
-    else:
-       form=formCadastro()
-
-    return render(request, 'chamados/cadastroform.html',{'form':form})'''
-
-  
-
-def userlogout(request):
-    form = formCadastro(request.POST)
-    logout(request) # entra um request e ele sai deste request 
-    return render(request, "chamados/cadastro_login.html", {'form': form})
-
-def userlogin(request):
-   
-    if request.method=="POST":
-        
-        form = formCadastro(request.POST)
-
-        username=request.POST.get('username')
-        password1=request.POST.get('password')
-        user = authenticate(request, username=username, password=password1)
-        if user is not None:
-            login(request, user)
-            return redirect("chamado_listar")
-        else:
-            return render(request, "chamados/cadastro_login.html", {
-                "error": "Usuário ou senha incorretos.",'form':form })
-                      
-    else:
-        form = formCadastro()
-
-    return render(request, "chamados/cadastro_login.html",{'form': form})
-
-def paginaIndex(request):
-
-    return render(request,"chamados/chamados_index.html")
-
-def navbar(request):
-    return render(request,"chamado_navbar.html")

@@ -5,13 +5,12 @@ from django.contrib.auth.models import User
 # técnico será criado pelo admin
 class Perfil(models.Model):
 
-    TIPOS = [
+    '''TIPOS = [
         ("user", "User"),
         ("tecnico", "Técnico"),  # técnico será criado pelo admin
-    ]
-
+    ]'''
     user = models.OneToOneField(User, on_delete=models.CASCADE) # um usario so pode existir em um perfil no User model e quando é eliminado todos os seu dados ficam eliminados
-    tipo = models.CharField(max_length=20, choices=TIPOS,default="user")
+    #tipo = models.CharField(max_length=20, choices=TIPOS,default="user")
 
 
 
@@ -25,10 +24,10 @@ status_choices=[('ABERTO','Aberto'),
 
 class Chamados(models.Model):
     # apaga os registo models.PROTECT
-    usuario=models.ForeignKey(User, related_name='usuarios', on_delete=models.CASCADE)
+    usuario=models.ForeignKey(User, related_name='usuarios_e_chamados', on_delete=models.CASCADE)
     titulo=models.CharField(max_length=200)
     descricao=models.TextField()
-    tecnico = models.ForeignKey(User, related_name='tecnicos', on_delete=models.SET_NULL, null=True, blank=True)# apaga e mantem os chamados e deixa null
+    tecnico = models.ForeignKey(User, related_name='tecnicos_e_Chamados', on_delete=models.SET_NULL, null=True, blank=True)# apaga e mantem os chamados e deixa null
     prioridade = models.CharField(max_length=13, choices=Prior_choices, default='BAIXA')
     status=models.CharField(max_length=13 ,choices=status_choices,default='ABERTO')
     data_criacao=models.DateTimeField(auto_now_add=True)# nao aparece no form pois nao se edita é auto now
