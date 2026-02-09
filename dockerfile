@@ -6,6 +6,11 @@ WORKDIR /app
 
 # 3. Copiar requirements e instalar dependências
 COPY requirements.txt .
+
+# Pip adicionado para resolver problema
+
+RUN pip install --upgrade pip setuptools wheel
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 4. Copiar o código do projeto

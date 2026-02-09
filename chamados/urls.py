@@ -23,5 +23,6 @@ urlpatterns = [
     
     #url da app
     path('api/', include(router.urls)),
+    
    
 ]
