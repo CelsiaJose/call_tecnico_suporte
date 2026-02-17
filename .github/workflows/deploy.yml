@@ -15,6 +15,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
+          port:22
           script: |
             echo "Iniciando deploy automático..."
             cd /home/ubuntu/projectsgcp/ec2_1/call_tecnico_suporte
@@ -22,5 +23,6 @@ jobs:
             docker-compose build
             sudo systemctl restart app
             docker image prune -f
+            sudo systemctl status app --no-pager
             echo "Deploy concluído com sucesso!"
 
