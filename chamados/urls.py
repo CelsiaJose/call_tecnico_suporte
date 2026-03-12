@@ -7,7 +7,7 @@ from rest_framework import routers
 #Criar instancia do router criado
 router=routers.DefaultRouter()
 # Registrar o router
-router.register(r'chamados',views.chamadoViewset)
+router.register(r'chamados',views.chamadoViewset,basename='chamado')
 
 urlpatterns = [
     path('listar/', views.chamado_listar, name='chamado_listar'),

@@ -33,7 +33,6 @@ def tecnico_requerid(view_func):
     return wrapper
 
 @login_required
-
 def chamado_listar(request):
     
     status=request.GET.get('status')# guarda a requisicao que vem da url exemplo status==aqualwuercoisa
@@ -232,3 +231,5 @@ class chamadoViewset(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         # Quando criar um chamado pela API, usa o usuário logado como "usuario"
         serializer.save(usuario=self.request.user) #Ou seja: não precisa o cliente enviar o usuário no JSON — o backend define sozinho.O usuario logado,ou seja salva os dados em serialzers e também o usuario que fez a requisicao
+        
+         

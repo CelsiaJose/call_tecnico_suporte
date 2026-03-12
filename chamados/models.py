@@ -34,19 +34,17 @@ class Chamados(models.Model):
     atualizado_em = models.DateTimeField(auto_now=True)# nao aparece no form pois nao se edita é auto now
     tempo_solucao=models.IntegerField(default=24)
 
+    
     def __str__(self):
-        return f"{self.titulo} - {self.usuario.username} ({self.usuario.perfil.tipo})"
+        tipo = "sem perfil"
+        if hasattr(self.usuario, "perfil"):
+            tipo = self.usuario.perfil.tipo
+        return f"{self.titulo} - {self.usuario.username} ({tipo})"
 
 
-    '''def __str__(self):
+'''    def __str__(self):
+        return f"{self.titulo} - {self.usuario.username} ({self.usuario.perfil.tipo})" '''
 
-        return f"{self.titulo} - {self.user.username} ({self.tipo})"'''
-
-
-    '''def __str__(self):
-        return self.titulo
-    def __str__(self):
-        return f"{self.user.username} ({self.tipo})"''' # 
 
 
 

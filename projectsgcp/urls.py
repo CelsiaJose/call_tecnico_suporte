@@ -33,6 +33,7 @@ urlpatterns = [
        #Url do jws
 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+     #Me ajuda a dar tratmaento ao sistema que no insomia teria dificuldade de acessar o login com isto faço o lgin pela api directo isto no insomia
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 
